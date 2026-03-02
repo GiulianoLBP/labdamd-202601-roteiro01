@@ -1,6 +1,6 @@
 # Relatório Técnico — Laboratório 2: Concorrência e Gargalos em Servidores TCP
 
-**Aluno:** [Seu nome]  
+**Aluno:** Giuliano Percope
 **Disciplina:** Laboratório de Desenvolvimento de Aplicações Móveis e Distribuídas  
 **Data:** 23/02/2026
 
@@ -29,12 +29,12 @@ Já o `server.py` utiliza Threads: assim que aceita uma conexão, imediatamente 
 **Observação experimental:** Ao executar `server.py` com `clientenervoso.py` (10 clientes), o log exibiu:
 
 ```
-[ATIVO] Conexões simultâneas: [PREENCHA O VALOR OBSERVADO]
+[ATIVO] Conexões simultâneas: 200
 ```
 
 **Resposta:**
 
-Com o modelo Multithread (`server.py`), o servidor criou **[N] threads simultâneas** para atender os clientes. Cada thread gerenciada pelo SO consome:
+Com o modelo Multithread (`server.py`), o servidor criou **[10] threads simultâneas** para atender os clientes. Cada thread gerenciada pelo SO consome:
 
 - **Memória de pilha (stack):** tipicamente entre 512 KB e 8 MB por thread (depende da plataforma). Para 10 threads: aproximadamente **5 MB a 80 MB** somente de overhead de pilha.
 - **Overhead de CPU:** o SO realiza *Context Switch* a cada quantum de tempo para alternar entre as threads. Com 10 threads bloqueadas em `time.sleep(5)` (que é uma syscall bloqueante), o escalonador precisa gerenciar todas elas mesmo que apenas aguardem I/O.
