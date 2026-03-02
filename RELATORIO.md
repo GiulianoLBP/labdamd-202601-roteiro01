@@ -51,7 +51,7 @@ Foi modificado o `clientenervoso.py` para disparar 200 conexões simultâneas co
 
 **Screenshot da execução:**
 
-![200 conexões simultâneas](../image.png)
+![200 conexões simultâneas](/image.png)
 
 
 **Resultado:** O `server_async.py` suportou as 200 conexões simultâneas com uma única thread, demonstrando a superioridade do modelo Event Loop em cenários de alta concorrência de I/O.
