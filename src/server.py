@@ -15,8 +15,6 @@ def processar_requisicao(conn, addr):
     
     connected = True
     while connected:
-        # A operação recv é BLOQUEANTE (Blocking I/O)
-        # Se não tivéssemos threads, o servidor todo pararia aqui.
         msg = conn.recv(1024).decode('utf-8')
         
         if not msg:
@@ -24,13 +22,11 @@ def processar_requisicao(conn, addr):
             
         print(f"[{addr}] Processando: {msg}")
         
-        # Simula latência ou processamento pesado (5 segundos)
         time.sleep(5) 
         
         resposta = f"Processado: {msg}".encode('utf-8')
         conn.send(resposta)
-        connected = False # Fecha após responder para simplificar
-
+        connected = False 
     conn.close()
     print(f"[DESCONECTADO] {addr}")
 
